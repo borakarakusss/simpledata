@@ -1,0 +1,28 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+df = pd.read_csv('IMDB-Movie-Data.csv')
+print("Highest Rated Movie:",df.Title[max(df.Rating)],max(df.Rating))
+
+#Graph with ratings
+plt.hist(df.Rating)
+plt.title("Ratings")
+plt.show()
+
+#Graph with metascores
+meta_score = df.Metascore.dropna()
+plt.hist(meta_score)
+plt.show()
+
+# movies with runtimes
+plt.hist(df["Runtime (Minutes)"])
+plt.title("Movie's Runtime in minutes")
+plt.xlabel("Number of movies with runtime")
+plt.show()
+
+#Movies released by years
+plt.title("Movies released by year")
+plt.xticks(range(2005,2017))
+plt.hist(df.Year,30)
+plt.show()
